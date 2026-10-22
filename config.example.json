@@ -1,0 +1,25 @@
+{
+  "listen": "127.0.0.1:1080",
+  "strategy": "fastest",
+  "health_interval_sec": 10,
+  "entries": [
+    {
+      "name": "tunnel-1",
+      "listen": "127.0.0.1:2201",
+      "client_cmd": ["dnstt-client", "-udp", "8.8.8.8:53", "-pubkey-file", "server1.pub", "t1.example.com", "127.0.0.1:2201"],
+      "ssh": { "user": "USER1", "password": "PASSWORD1", "host_key_sha256": "SHA256:REPLACE_WITH_SERVER1_FINGERPRINT" }
+    },
+    {
+      "name": "tunnel-2",
+      "listen": "127.0.0.1:2202",
+      "client_cmd": ["dnstt-client", "-udp", "1.1.1.1:53", "-pubkey-file", "server2.pub", "t2.example.org", "127.0.0.1:2202"],
+      "ssh": { "user": "USER2", "key_file": "id_ed25519_2", "host_key_sha256": "SHA256:REPLACE_WITH_SERVER2_FINGERPRINT" }
+    },
+    {
+      "name": "tunnel-3",
+      "listen": "127.0.0.1:2203",
+      "client_cmd": ["dnstt-client", "-udp", "9.9.9.9:53", "-pubkey-file", "server3.pub", "t3.example.net", "127.0.0.1:2203"],
+      "ssh": { "user": "USER3", "password": "PASSWORD3", "host_key_sha256": "SHA256:REPLACE_WITH_SERVER3_FINGERPRINT" }
+    }
+  ]
+}
