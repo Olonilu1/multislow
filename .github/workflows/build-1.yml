@@ -42,7 +42,7 @@ jobs:
 
       - name: Build dnstt-client for arm64
         run: |
-          git clone --depth 1 https://www.bamsoftware.com/git/dnstt.git /tmp/dnstt
+          git clone https://www.bamsoftware.com/git/dnstt.git /tmp/dnstt
           mkdir -p multislow/android/app/src/main/jniLibs/arm64-v8a
           cd /tmp/dnstt/dnstt-client
           CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -trimpath -ldflags "-s -w" \
