@@ -51,8 +51,9 @@ jobs:
       - name: Build Go library with gomobile
         working-directory: multislow
         run: |
-          go get golang.org/x/mobile/bind
           go mod tidy
+          go get -tool golang.org/x/mobile/cmd/gobind
+          go get golang.org/x/mobile/bind
           go test -count=1 .
           go install golang.org/x/mobile/cmd/gomobile@latest
           go install golang.org/x/mobile/cmd/gobind@latest
